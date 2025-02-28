@@ -1,0 +1,21 @@
+---
+layout: _page_skeleton.njk
+pagination:
+  data: posts
+  size: 1
+  alias: post
+permalink: "/{{ post.slug }}/index.html"
+---
+{%- from "_njk/component.njk" import component -%} 
+{{ component('main-navigation', { strapline: site.strapline })}}
+
+<section class="container mx-auto p-4 max-w-6xl mt-12">
+  <div class="prose prose-xl">
+    <h1>{{ post.title }}</h1>
+    <p class="">{{ post.summary }}</p>
+    <p class="">{{ post.content | safe }}</p>
+  </div>
+</section>
+
+
+

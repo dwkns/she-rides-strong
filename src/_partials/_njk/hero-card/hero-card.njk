@@ -1,0 +1,31 @@
+<a href="/{{props.slug}}/">
+  <div class="flex flex-col gap-4">
+    <img
+      src="{{props.heroImageURL}}"
+      alt=""
+      class="aspect-video object-cover"
+    />
+
+    <div class="flex-col flex">
+      <div class="group">
+        <span
+          class="text-xs bg-gray-200 px-3 py-1 font-medium rounded-full text-gray-600 hover:bg-gray-300"
+          >{{props.category}}</span
+        >
+
+        <h3
+          class="mt-2 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600"
+        >
+          <span class="inset-0"></span>{{props.title}}
+        </h3>
+        <p class="mt-1 line-clamp-3 text-sm/6 text-gray-600">
+          {{props.summary}}
+        </p>
+      </div>
+
+      <div class="mt-2 flex items-center gap-x-4 text-xs">
+        <time datetime="2020-03-16" class="text-gray-500">{{props.date}}</time>
+      </div>
+    </div>
+  </div>
+</a>

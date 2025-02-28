@@ -1,0 +1,15 @@
+---
+layout: _page_skeleton.njk
+title: "About"
+permalink: "/about/"
+---
+
+{%- from "_njk/component.njk" import component -%} 
+{{ component('main-navigation', { strapline: site.strapline })}}
+<section class="container mx-auto p-4 max-w-6xl mt-12">
+  <div class="prose prose-xl">
+    <h1>{{ title }}</h1>
+    <p class="">{{ about.content | safe }}</p>
+  </div>
+</section>
+

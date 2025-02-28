@@ -1,0 +1,13 @@
+node_modules
+node_modules.nosync/
+.vscode/
+web_modules
+build
+.build
+dist
+.cache
+yarn-error.log
+# Local Netlify folder
+.netlify
+.env
+.DS_Store

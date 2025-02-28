@@ -1,0 +1,36 @@
+---
+layout: _page_skeleton.njk
+permalink: "/"
+---
+
+{%- from "_njk/component.njk" import component -%}
+<section>
+  <div class="grid grid-cols-12">
+    <div class="col-span-12 col-start-1 row-start-1" >
+      <img class="object-cover h-[30rem] w-full" src="{{ home.heroImageURL }}" alt="" />
+    </div>
+    <div class="col-span-12 col-start-1 row-start-1 container mx-auto max-w-6xl grid grid-cols-12 gap-4 px-4" >
+      <div class="col-span-4 flex items-center my-auto py-12 bg-white shadow-2xl flex-col" >
+       <img class=" mx-auto object-fit h-48 " src="/images/logo-black.svg" alt="site logo" />
+       <p class="px-8 text-lg/6 font-bold text-center mt-4">{{ site.strapline }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container mx-auto p-4 max-w-6xl" >
+  <div class="grid grid-cols-12 gap-4 mt-8" >
+    {% for post in posts %}
+    <div class="col-span-4">
+      {{ component("hero-card", 
+      { title: post.title, 
+        category: post.category, 
+        summary: post.summary, 
+        heroImageURL: post.heroImageURL,
+        date: post.date, 
+        slug: post.slug }
+        ) }}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
