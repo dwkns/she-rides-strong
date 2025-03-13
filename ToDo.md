@@ -1,3 +1,12 @@
-- [ x ] Enforce categories on each post
-- [  ] Add post status : Live | Draft 
-- [ x ] Upgrade to Tailwind 4
+
+- Add post status in Sanity: Live | Draft 
+- Mobile formatting
+- Opengraph (image creation & metadata)
+- Cache headers
+- Image optimisaion
+- Robots.txt
+- Sitemap.xml
+- Side by Side images in Potable text
+- SEO fields in Sanity
+- Yoast.js SEO checking
+- Minimum lenghts on Summary field
