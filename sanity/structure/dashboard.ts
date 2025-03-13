@@ -5,16 +5,18 @@ export const dashboard: any = dashboardTool({
   widgets: [
     projectInfoWidget(),
     netlifyWidget({
-      title: 'My Netlify deploys',
+      title: "Deploy to Netlify",
       sites: [
         {
-          title: 'She Rides Strong',
-          apiId: '', // '5ed2cb0c-e968-41e7-aa06-ef2a0feb283f'
-          buildHookId: '', //'66e070277e444a63fbe6ffa5',
-          name: '', //'ech-staging',
-          url: '', //'https://ech-staging.netlify.app/',
+          title: "She Rides Strong",
+          apiId: "c665d0ac-7eac-4375-b1f6-b9d7649fb44a", 
+          buildHookId:  "67c5a689b06c550fcd183315", 
+          name: "she-rides-strong", 
+          url: "https://she-rides-strong.netlify.app/",
         }
       ]
     })
   ]
 })
+
+

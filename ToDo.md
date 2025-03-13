@@ -1,0 +1,2 @@
+- Enforce categories on each post
+- Add post status : Live | Draft 

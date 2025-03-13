@@ -24,7 +24,8 @@ const GROQresult = await client.fetch(`
 }
 `) 
 
-
+//  console.log(`----------${documentType} GROQ Result: `, GROQresult)
+//  console.log(`----------${documentType} GROQ Resul lengtht: `, GROQresult.length)
 // console.log("post.content: ", GROQresult[0].content)
 // loop each post and convert block content to HTML
 GROQresult.forEach(post => {
@@ -32,24 +33,24 @@ GROQresult.forEach(post => {
     components: {
       types: {
         image: ({value}) => {
-          return `<img src="${value.asset.url}" />` 
+          return `<img src="${value?.asset?.url}" />` 
         }
       }
     },
    
   })
   post.content = html
-
   post.date = new Date(post.date).toDateString();
+  console.log("post.title: ",post.title )
 
   post["slug"] = slugify(post.title,{lower:true,strict:true})
-  console.log("post.slug: ", post.slug)
+  // console.log("post.slug: ", post.slug)
 })
 
 
 
 
-//  console.log(`----------${documentType} GROQ Result: `, GROQresult)
+
 
 console.log(`${documentType} data rebuilt`) 
 
