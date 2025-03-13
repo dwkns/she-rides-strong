@@ -1,8 +1,18 @@
 import logToConsole from 'eleventy-plugin-console-plus'
  import touch from 'touch'
+ import tailwindcss from 'eleventy-plugin-tailwindcss-4'
+
+
+
+
 
 
 export default (eleventyConfig) => {
+
+  eleventyConfig.addPlugin(tailwindcss, {
+    input: 'css/tailwind.css', // relative to your project input folder
+    output:'styles.css' // relative to your project output folder
+  });
 
   eleventyConfig.addPlugin(logToConsole, {});
 

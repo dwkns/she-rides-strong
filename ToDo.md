@@ -1,2 +1,3 @@
-- Enforce categories on each post
-- Add post status : Live | Draft 
+- [ x ] Enforce categories on each post
+- [  ] Add post status : Live | Draft 
+- [ x ] Upgrade to Tailwind 4
