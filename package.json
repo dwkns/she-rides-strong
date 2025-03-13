@@ -27,7 +27,8 @@
     "build:tailwind": "tailwind -i ./src/styles/tailwind.css -o ./src/styles/main.css",
     "build:eleventy": "eleventy",
     "sanity:build": "cd sanity && npx sanity build ../src/admin/ -y && cd .. && yarn build",
-    "sanity:dev": "cd sanity && sanity dev"
+    "sanity:dev": "cd sanity && sanity dev",
+    "deploy" : "cd sanity && npx sanity build ../src/admin/ -y && cd .. && yarn build && git add . && git commit -m 'deploy' && git push"
   },
   "author": "dazza"
 }

@@ -38,7 +38,7 @@ export const posts = {
       initialValue: "Post Summary",
       validation: (rule: any) => rule.required().min(10)
     },
-    image({ title: "Hero Image", required:true}),
+    image({ title: "Hero Image", required:true }),
     {
       title: 'Content',
       name: 'content',
@@ -46,7 +46,9 @@ export const posts = {
       of: [
         { type: 'block' },
         image({
-          title: "Inline image"
+          title: "Inline image",
+          required: true
+
         })
       ]
     },
@@ -55,7 +57,8 @@ export const posts = {
         title: 'Category',
         name: 'category',
         type: 'reference',
-        to: [{ type: 'categories' }]
+        to: [{ type: 'categories' }],
+        validation:  (rule: any) => rule.required()
       }
     ),
     defineField(

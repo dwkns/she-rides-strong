@@ -5,13 +5,22 @@ export const image = (props: any) => {
     name: props.name ||= 'image',
     title: props.title ||= 'Image Title',
     type: 'image',
-    validation: props.required ?  (rule: any) => rule.required() : false,
+    descricription: props.required ? 'An image is required' : 'An image is optional',
+    validation:  (Rule: any) => [
+      Rule.custom((value: any) => {
+        if (props.required === true) {
+          return value && value.asset ? true : { message: 'An Image is Required!'};
+        } else {
+          return false;
+        }
+        
+      }),
+    ],
     options: {
       hotspot: true, // <-- Defaults to false
       collapsible: props.collapsible ||= false,
-      collapsed: props.collapsed ||= false
+      collapsed: props.collapsed ||= false,
     },
-    // validation: (Rule: rule) => Rule.required(),
     fields: [
       {
         title: "Alternative Text",
@@ -19,8 +28,13 @@ export const image = (props: any) => {
         name: "alt",
         type: "string",
         initialValue: "",
-        
-        // validation: (Rule: any) => Rule.required(),
+      },
+      {
+        title: "Image Credit",
+        description: "Optional. The person who took the photo or the copyright holder.",
+        name: "imageCredit",
+        type: "string",
+        initialValue: "",
       },
       {
         title: "Image link",
@@ -28,17 +42,8 @@ export const image = (props: any) => {
         name: "imageLink",
         type: "string",
         initialValue: "",
-        hidden: props.hideImageLink ||= false,
-        // validation: (Rule: any) => Rule.required(),
-      }
-      ,
-      {
-        title: "Image Credit",
-        description: "Optional. The person who took the photo or the copyright holder.",
-        name: "imageCredit",
-        type: "string",
-        initialValue: "",
-        // validation: (Rule: any) => Rule.required(),
+        hidden: props.showImageLink ||= true,
+
       }
     ],
 
