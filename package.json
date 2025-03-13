@@ -28,7 +28,7 @@
     "build:eleventy": "eleventy",
     "sanity:build": "cd sanity && npx sanity build ../src/admin/ -y && cd .. && yarn build",
     "sanity:dev": "cd sanity && sanity dev",
-    "deploy" : "cd sanity && npx sanity build ../src/admin/ -y && cd .. && yarn build && git add . && git commit -m 'deploy' && git push"
+    "deploy" : "cd sanity && npx sanity build ../src/admin/ -y && cd .. && yarn build && git add . && git commit -m 'code deploy' && git push"
   },
   "author": "dazza"
 }
