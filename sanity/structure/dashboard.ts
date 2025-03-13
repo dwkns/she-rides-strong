@@ -3,7 +3,6 @@ import { netlifyWidget } from "sanity-plugin-dashboard-widget-netlify";
 
 export const dashboard: any = dashboardTool({
   widgets: [
-    projectInfoWidget(),
     netlifyWidget({
       title: "Deploy to Netlify",
       sites: [
