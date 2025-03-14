@@ -6,7 +6,7 @@ pagination:
   alias: post
 permalink: "/{{ post.slug }}/index.html"
 ---
-{%- from "_njk/component.njk" import component -%} 
+{%- from "_components/component.njk" import component -%} 
 {{ component('main-navigation', { strapline: site.strapline })}}
 <section class="container mx-auto p-4 max-w-6xl mt-4">
 <a href="/" class=""> <p class="hover:underline">← All posts </p></a> 
@@ -18,6 +18,3 @@ permalink: "/{{ post.slug }}/index.html"
     <p class="">{{ post.content | safe }}</p>
   </div>
 </section>
-
-
-
