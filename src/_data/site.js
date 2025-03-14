@@ -12,6 +12,7 @@ const GROQresult = await client.fetch(`
   language,
   strapline,
   productionURL,
+  "baseURL": productionURL,
   description
 }
 `)
