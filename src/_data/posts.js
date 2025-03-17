@@ -44,7 +44,7 @@ GROQresult.forEach(post => {
   console.log("post.title: ",post.title )
 
   post["slug"] = slugify(post.title,{lower:true,strict:true})
-  // console.log("post.slug: ", post.slug)
+// console.log("post.slug: ", post.slug)
 })
 
 
@@ -53,5 +53,6 @@ GROQresult.forEach(post => {
 
 
 console.log(`${documentType} data rebuilt`) 
+//  console.log(GROQresult) 
 
 export default GROQresult 

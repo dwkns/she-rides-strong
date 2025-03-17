@@ -10,9 +10,16 @@
   <body class="">
    
     {% if site.currentEnv == "development" %}
+    {# {% console page %} #}
       <script>
         async function fetchAsync() {
-          const url = "/reload/" + btoa("{{ page.inputPath }}") // convert template path to b64
+        
+          const inputPath = "{{ page.inputPath}}"
+          const filePathStem = "{{page.filePathStem}}"
+          let obj = {inputPath ,filePathStem}
+          const srt = JSON.stringify(obj)
+          console.log("srt: ", srt)
+          const url = "/reload/" + btoa(srt) // convert template path to b64
           let response = await fetch(url)
           console.log(`Sent: ${url} — Recieved ${response.status}`)
         }

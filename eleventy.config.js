@@ -1,6 +1,7 @@
 import logToConsole from 'eleventy-plugin-console-plus'
- import touch from 'touch'
- import tailwindcss from 'eleventy-plugin-tailwindcss-4'
+import EleventyVitePlugin from '@11ty/eleventy-plugin-vite'
+import tailwindcss from '@tailwindcss/vite';
+import touch from 'touch'
 
 
 
@@ -8,17 +9,14 @@ import logToConsole from 'eleventy-plugin-console-plus'
 
 
 export default (eleventyConfig) => {
-
-  eleventyConfig.addPlugin(tailwindcss, {
-    input: 'css/tailwind.css', // relative to your project input folder
-    output:'styles.css' // relative to your project output folder
-  });
-
   eleventyConfig.addPlugin(logToConsole, {});
+  eleventyConfig.addPlugin(EleventyVitePlugin, {
+    viteOptions: { plugins: [tailwindcss()] }
+  });
 
 
   eleventyConfig.addPassthroughCopy({
-    "src/styles/main.css": "./main.css",
+   "src/css/tailwind.css": "styles.css" ,
     "src/images/": "./images/",
     "src/admin/": "./admin/",
   });
@@ -30,14 +28,25 @@ export default (eleventyConfig) => {
 
   eleventyConfig.setServerOptions({
     onRequest: {
-      "/reload/:template": function ({ url, pattern, patternGroups }) {
-        const template = atob(patternGroups.template) // decode the b64 encocded string
-        console.log("template:", template) // tells us which template needs to change
-        // code to reprocess data cascade
-        // code to rebuild template
-         touch(template)
-         touch('./src/_data/about.js')
-        return "Nothing to see here" 
+      "/reload/:b64String": function ({ url, pattern, patternGroups }) {
+
+        const b64String = atob(patternGroups.b64String) // decode the b64 
+        const pageData = JSON.parse(b64String); // turn string into JSON
+
+        const dir = eleventyConfig.dir // get eleventy directories
+
+        // Assume the datafile is the same name as the template.
+        const dataFile = `./${dir.input}/${dir.data}${pageData.filePathStem}.js`
+        touch.sync(dataFile)
+        // console.log("template: ", template)
+       
+        // get the template and 'touch' it
+        const template = pageData.inputPath
+        touch.sync(template)
+        // console.log("datafile: ", dataFile)
+        
+  
+        return "Nothing to see here"
       },
     }
   });

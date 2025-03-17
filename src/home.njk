@@ -2,7 +2,7 @@
 layout: _page_skeleton.njk
 permalink: "/"
 ---
-
+{{ hell }}
 {%- from "_components/component.njk" import component -%} 
 <section>
   <div class="grid grid-cols-12">
@@ -10,27 +10,83 @@ permalink: "/"
       <img class="object-cover h-[30rem] w-full" src="{{ home.heroImageURL }}" alt="" />
     </div>
     <div class="col-span-12 col-start-1 row-start-1 container mx-auto max-w-6xl grid grid-cols-12 gap-4 px-4" >
-      <div class="col-span-4 flex items-center my-auto py-12 bg-white shadow-2xl flex-col" >
-       <img class=" mx-auto object-fit h-48 " src="/images/logo-black.svg" alt="site logo" />
-       <p class="px-8 text-lg/6 font-bold text-center mt-4">{{ site.strapline }}</p>
+      <div class="col-span-12 md:col-span-4 flex items-center my-auto py-12 bg-white shadow-2xl flex-col" >
+       <img class="mx-auto object-fit h-48 " src="/images/logo-black.svg" alt="site logo" />
+       <p class="max-w-xs text-lg/6 font-bold text-center mt-4">{{ site.strapline }}</p>
       </div>
     </div>
   </div>
 </section>
-<section class="container mx-auto p-4 max-w-6xl" >
-  <div class="grid grid-cols-12 gap-4 mt-8" >
-    {% for post in posts %}
-    <div class="col-span-4">
-      {{ component("hero-card", 
-      { title: post.title, 
-        category: post.category, 
-        summary: post.summary, 
-        heroImageURL: post.heroImageURL,
-        date: post.date, 
-        slug: post.slug }
-        ) }}
-      </div>
+
+
+<section  class="container mx-auto px-4 py-8 max-w-6xl">
+    <!-- Featured Card (Large) -->
+    {% if posts[0] %}
+    <div class="mb-8">
+      <a href="{{ posts[0].slug }}/" class="block group">
+        <div class="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-[1.02]">
+          <img 
+            src="{{ posts[0].heroImageURL }}" 
+            alt="{{ posts[0].title }}"
+            class="w-full h-[400px] object-cover"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <span class="inline-block px-3 py-1 text-sm font-semibold bg-red-600 rounded-full mb-2">{{ posts[0].category }}</span>
+            <h2 class="text-3xl font-bold mb-2">{{ posts[0].title }}</h2>
+            <p class="text-lg mb-2">{{ posts[0].summary }}</p>
+            <time class="text-sm">{{ posts[0].date }}</time>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+  
+    <!-- Two Card Row -->
+    {% if posts[1] and posts[2] %}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      {% for i in range(1, 3) %}
+      <a href="{{ posts[i].slug }}/" class="block group">
+        <div class="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-[1.02]">
+          <img 
+            src="{{ posts[i].heroImageURL }}" 
+            alt="{{ posts[i].title }}"
+            class="w-full h-[300px] object-cover"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <span class="inline-block px-3 py-1 text-sm font-semibold bg-red-600 rounded-full mb-2">{{ posts[i].category }}</span>
+            <h2 class="text-2xl font-bold mb-2">{{ posts[i].title }}</h2>
+            <p class="text-base mb-2">{{ posts[i].summary }}</p>
+            <time class="text-sm">{{ posts[i].date }}</time>
+          </div>
+        </div>
+      </a>
       {% endfor %}
     </div>
-  </div>
+    {% endif %}
+  
+    <!-- Three Card Grid -->
+    {% if posts[3] %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for i in range(3, posts.length) %}
+      <a href="{{ posts[i].slug }}/" class="block group">
+        <div class="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-[1.02]">
+          <img 
+            src="{{ posts[i].heroImageURL }}" 
+            alt="{{ posts[i].title }}"
+            class="w-full h-[250px] object-cover"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <span class="inline-block px-3 py-1 text-sm font-semibold bg-red-600 rounded-full mb-2">{{ posts[i].category }}</span>
+            <h2 class="text-xl font-bold mb-2">{{ posts[i].title }}</h2>
+            <p class="text-sm mb-2">{{ posts[i].summary }}</p>
+            <time class="text-xs">{{ posts[i].date }}</time>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
 </section>

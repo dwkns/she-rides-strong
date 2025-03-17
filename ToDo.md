@@ -4,9 +4,13 @@
 - Opengraph (image creation & metadata)
 - Cache headers
 - Image optimisaion
-- Robots.txt
+- Change BaseURL
 - Sitemap.xml
 - Side by Side images in Potable text
 - SEO fields in Sanity
 - Yoast.js SEO checking
 - Minimum lenghts on Summary field
+- Add different config for each enviroment
+- Add domain to netlify (check HTTPS)
+- Add domain to Sanity
+- Sort Site Settings in Sanity (three groups each the same object production, staging, development — hide staging and dev and key production tools)

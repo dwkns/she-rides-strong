@@ -20,7 +20,7 @@ const html = toHTML(GROQresult.content, {
     components: {
         types: {
             image: ({ value }) => {
-                console.log("value: ", value.asset.url)
+                // console.log("value: ", value.asset.url)
                 return `<img src="${value.asset.url}" />`
             }
         }
